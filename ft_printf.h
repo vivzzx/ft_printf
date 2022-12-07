@@ -6,7 +6,7 @@
 /*   By: video-fl <video-fl@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:27:55 by video-fl          #+#    #+#             */
-/*   Updated: 2022/12/07 12:57:52 by video-fl         ###   ########.fr       */
+/*   Updated: 2022/12/07 16:48:16 by video-fl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,4 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-oi
+// so mais um teste
