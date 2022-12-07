@@ -1,6 +1,6 @@
 .vscode/
 .DS_Store
-copy2dev.sh
+*.sh
 a.out
 *.swp
 *.gch
