@@ -1,0 +1,7 @@
+.vscode/
+.DS_Store
+copy2dev.sh
+a.out
+*.swp
+*.gch
+*.d
