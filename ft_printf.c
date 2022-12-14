@@ -6,34 +6,28 @@
 /*   By: video-fl <video-fl@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:19:02 by video-fl          #+#    #+#             */
-/*   Updated: 2022/12/07 16:39:46 by video-fl         ###   ########.fr       */
+/*   Updated: 2022/12/08 20:13:24 by video-fl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "ft_printf.h"
-#include <stdio.h>
-#include <stdarg.h>
-#include <string.h>
+#include "ft_printf.h"
 
 int ft_printf(const char *str, ...)
 {
-    int j = 0;
+    int i = 0;
+    //contador - 1o arg e terminador
+    int count = ft_strlen(str) - 2;
+    //printf("\ncount: %d\n", count);
     va_list args;
 
     va_start(args, str);
 
-    while (j < 3)
-    {
-        printf("\narg %d: %c\n", j, str[j]);
-        if (str[j] == '%')
-            printf("\ntem uma porcentagem aqui\n");
-        j++;
-    }
-
-    for (int i = 0; i < 3; i++)
+    while (i < count)
     {
         char *value = va_arg(args, char *);
-        printf("%d: %s\n", i, value);
+        //printf("%d: %s\n", i, value);
+        check_arg(value);
+        i++;
     }
 
     va_end(args);
@@ -43,10 +37,11 @@ int ft_printf(const char *str, ...)
 
 int main()
 {
+    //int a = 42;
     // Official Test
     //printf("\tOfficial printf test:\n");
     // mais um teste aqui
-    //printf();
+    //printf("oi eu sou" "um print f" "outro aqui %d\n", a);
 
     // unOfficial Test
     printf("\tunOfficial printf test:\n");
@@ -54,3 +49,7 @@ int main()
 
     return (0);
 }
+
+/*
+gcc ft_printf.h ft_printf.c ft_strlen.c check_arg.c && ./a.out
+*/
