@@ -6,7 +6,7 @@
 /*   By: video-fl <video-fl@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:19:02 by video-fl          #+#    #+#             */
-/*   Updated: 2022/12/08 20:13:24 by video-fl         ###   ########.fr       */
+/*   Updated: 2022/12/14 17:52:58 by video-fl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,15 @@ int ft_printf(const char *str, ...)
     va_list args;
 
     va_start(args, str);
-
+    filter_func2(args, count);
+    /*
     while (i < count)
     {
         char *value = va_arg(args, char *);
-        //printf("%d: %s\n", i, value);
-        check_arg(value);
+        printf("%d: %s\n", i, value);
+        //filter_func(value);
         i++;
-    }
+    }*/
 
     va_end(args);
     
@@ -45,11 +46,11 @@ int main()
 
     // unOfficial Test
     printf("\tunOfficial printf test:\n");
-    ft_printf("teste", "hola", "que %dqueisso", "tal");
+    ft_printf("teste", "aqui %d um numero %d vai shsu%dhs", 12, 2.2, 29);
 
     return (0);
 }
 
 /*
-gcc ft_printf.h ft_printf.c ft_strlen.c check_arg.c && ./a.out
+gcc ft_printf.h ft_printf.c ft_strlen.c filter_func.c && ./a.out
 */

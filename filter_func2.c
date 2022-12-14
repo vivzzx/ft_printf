@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   filter_func2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: video-fl <video-fl@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/07 12:27:55 by video-fl          #+#    #+#             */
-/*   Updated: 2022/12/14 16:18:18 by video-fl         ###   ########.fr       */
+/*   Created: 2022/12/14 16:14:05 by video-fl          #+#    #+#             */
+/*   Updated: 2022/12/14 17:42:39 by video-fl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-#include <stdio.h>
-#include <string.h>
-#include <stdarg.h>
-#include <stdlib.h>
-#include <unistd.h>
+void filter_func2(va_list args, int count)
+{
+    int i = 0;
+    int num_args = 0;
+    char *value = va_arg(args, char *);
+    int size = ft_strlen(value);
 
-int ft_printf(const char *str, ...);
+    while (num_args < count) // loop em todos os args
+    {
+        while (i < size)
+        {
+            printf("\narg %d: %s", num_args, value);
+            i++;
+        }
 
-/* Helper Functions */
-size_t	ft_strlen(const char *s);
-//void filter_func(char *arg);
-void filter_func2(va_list args, int count);
 
-#endif
+        num_args++;
+    }
+}

@@ -1,16 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_arg.c                                        :+:      :+:    :+:   */
+/*   filter_func.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: video-fl <video-fl@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 19:36:13 by video-fl          #+#    #+#             */
-/*   Updated: 2022/12/08 20:12:45 by video-fl         ###   ########.fr       */
+/*   Updated: 2022/12/14 15:58:36 by video-fl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+
+char	*ft_strchr(const char *s, int c)
+{ // busca primeira ocorrencia de c e retorna resultante
+	while (*s != (char)c)
+	{
+		if (*s == '\0' && (char)c != '\0')
+			return (0);
+		s++;
+	}
+	return ((char *)s);
+}
 
 static char	*ft_strrchr(const char *s, int c)
 {
@@ -56,15 +68,43 @@ void	ft_putchar_fd(char c, int fd)
 	write(fd, &c, 1);
 }
 
-void check_arg(char *arg)
+void check_arg(char *arg, int index)
 {
-    int symbol;
+	if (arg[index + 1] == '%')
+		printf("--> double %% <--");
+	else if (arg[index + 1] == 'c')
+		printf("--> c <--");
+	if (arg[index + 1] == 'd')
+		printf("%d", 12);
+	/*
+		aqui nao deu certo pq n tenho acesso a lista dos argumentos, entao n consigo
+		acessar o prox argumento que seria o numero ncessario
+	*/
+}
+
+void filter_func(char *arg)
+{
+    //int symbol;
     int len;
     int i;
 
     i = 0;
     len = ft_strlen(arg);
     //printf("\narg: %s, len = %d\n", arg, len);
+
+	while (i < len)
+	{
+		if (arg[i] != '%')
+			ft_putchar_fd(arg[i], 1);
+		else 
+		{
+			//printf("\npassou aqui no else\n");
+			check_arg(arg, i);
+			i++;
+		}
+		i++;
+	}
+	/*
     if (ft_strrchr(arg, '%') == NULL)
         symbol = 0;
     else
@@ -82,11 +122,11 @@ void check_arg(char *arg)
             i++;
         }
     }
-    //if ()    
-    //printf("\nsymbol %%: %d\n", symbol);
+	*/
 
     /* 
     Nessa parte, eu tenho que criar a busca das variaveis dentro da string para
     imprimir da forma correta. Da pra usar o strnstr pra buscar como needle.
     */
 }
+
