@@ -6,7 +6,7 @@
 /*   By: video-fl <video-fl@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:19:02 by video-fl          #+#    #+#             */
-/*   Updated: 2022/12/14 17:52:58 by video-fl         ###   ########.fr       */
+/*   Updated: 2022/12/15 16:41:16 by video-fl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ int ft_printf(const char *str, ...)
 {
     int i = 0;
     //contador - 1o arg e terminador
-    int count = ft_strlen(str) - 2;
+    int count = ft_strlen(str) - 1;
     //printf("\ncount: %d\n", count);
     va_list args;
 
     va_start(args, str);
-    filter_func2(args, count);
+    filter_func2(args);
     /*
     while (i < count)
     {
@@ -46,11 +46,11 @@ int main()
 
     // unOfficial Test
     printf("\tunOfficial printf test:\n");
-    ft_printf("teste", "aqui %d um numero %d vai shsu%dhs", 12, 2.2, 29);
+    ft_printf("teste", "o numero %d significa prosperidade. O numero %d, amor, %d: alegria. %d eh o seu numero da sorte. Toma mais um numero ai %d. Fim!\n", 12, 2, 29, 55, 987);
 
     return (0);
 }
 
 /*
-gcc ft_printf.h ft_printf.c ft_strlen.c filter_func.c && ./a.out
+gcc ft_printf.h ft_printf.c ft_strlen.c filter_func2.c ft_itoa.c && ./a.out
 */
