@@ -6,31 +6,24 @@
 /*   By: video-fl <video-fl@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 16:14:05 by video-fl          #+#    #+#             */
-/*   Updated: 2022/12/15 18:22:06 by video-fl         ###   ########.fr       */
+/*   Updated: 2022/12/20 16:26:58 by video-fl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putchar_fd(char c, int fd)
+char *print_hex(unsigned int value_hex)
 {
-	write(fd, &c, 1);
-}
+    char *result;
+    unsigned int value;
 
-void loop_print(char *to_print)
-{
-    int counter;
-    int size;
-
-    counter = 0;
-    size = ft_strlen(to_print);
-    //printf("\n counter inicio: %d\n", counter);
-    while (counter < size)
+    value = value_hex % 16;
+    if (value > 16)
     {
-        ft_putchar_fd(to_print[counter], 1);
-        //printf("\n counter: %d -- char: %c", counter, to_print[counter]);
-        counter++;
+        printf("\ntest %d", value);
     }
+
+    return result;
 }
 
 void check_arg(va_list args, char next)
@@ -44,11 +37,11 @@ void check_arg(va_list args, char next)
     unsigned long value_hex = 0;
 
 	if (next == '%') // ok
-		ft_putchar_fd('%', 1);
+		ft_putchar('%', 1);
 	if (next == 'c') // ok
     {
         value_char = va_arg(args, int); //implicit conversion **note 1
-		ft_putchar_fd(value_char, 1);
+		ft_putchar(value_char, 1);
     }
 	if (next == 'd' || next == 'i') // ok
     {
@@ -76,6 +69,13 @@ void check_arg(va_list args, char next)
     }
     if (next == 'x') // hexadecimal
     {
+        value_ui = va_arg(args, int);
+        printf("\nhex: %u", value_ui);
+        //value_int = check_arg / 16;
+        
+        //print_hex(value_hex);
+        //to_print = ft_itoa(value_hex);
+        //loop_print(to_print);
         // usar unsigned long -> ver como funciona
     }
 }
@@ -95,11 +95,10 @@ void filter_func2(va_list args)
         {
             //printf("\t tem um %% aqui\t");
             check_arg(args, value[i + 1]);
-            
             i++;
         }
         else 
-            ft_putchar_fd(value[i], 1);
+            ft_putchar(value[i], 1);
         i++;
 
     }

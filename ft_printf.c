@@ -6,7 +6,7 @@
 /*   By: video-fl <video-fl@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:19:02 by video-fl          #+#    #+#             */
-/*   Updated: 2022/12/15 18:08:06 by video-fl         ###   ########.fr       */
+/*   Updated: 2022/12/20 15:46:37 by video-fl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ int ft_printf(const char *str, ...)
 int main()
 {
     unsigned int a = 42;
-    int b = 0;
+    int b = 255;
+    int hex = 255;
     // Official Test
     //printf("\tOfficial printf test:\n");
     // mais um teste aqui
@@ -47,16 +48,17 @@ int main()
 
     // unOfficial Test
     printf("\tunOfficial printf test:\n");
+    printf("Teste 0: %d in hexadecimal = %x\n", b, hex);
     //ft_printf("teste", "O numero %u significa prosperidade. %%O numero %d, amor; %d: alegria. %d eh o seu numero da sorte. Toma mais um numero ai %d. %cim!\n", a, 2, 52, 55, 987, 'F');
     
     //ft_printf("teste", "String %d: %s\n", 12, "eu sou um novo string");
 
-    ft_printf("teste", "\nString %d -- endereco: %p\n", 12, &a);
-
+    //ft_printf("teste", "\nString %d -- endereco: %p\n", 12, &a);
+    ft_printf("Teste 1: %d in hexadecimal = %x\n", b, hex);
 
     return (0);
 }
 
 /*
-gcc ft_printf.h ft_printf.c ft_strlen.c filter_func2.c ft_itoa.c && ./a.out
+gcc ft_printf.h ft_printf.c ft_strlen.c filter_func2.c ft_putchar.c loop_print.c ft_itoa.c && ./a.out
 */
