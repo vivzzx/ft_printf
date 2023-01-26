@@ -6,7 +6,7 @@
 /*   By: video-fl <video-fl@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:19:02 by video-fl          #+#    #+#             */
-/*   Updated: 2022/12/20 15:46:37 by video-fl         ###   ########.fr       */
+/*   Updated: 2023/01/26 15:48:56 by video-fl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int ft_printf(const char *str, ...)
     va_list args;
 
     va_start(args, str);
-    filter_func2(args);
+    filter_func2(str, args);
     /*
     while (i < count)
     {
@@ -40,25 +40,30 @@ int main()
 {
     unsigned int a = 42;
     int b = 255;
-    int hex = 255;
+    unsigned int hex = 1150;
+    char *str = "Hello there";
     // Official Test
-    //printf("\tOfficial printf test:\n");
+    printf("\t Official printf test: \n");
+    printf("Teste 0: %s\n", str);
+    printf("Teste 1: %x in hexadecimal = %x\n", b, hex);
     // mais um teste aqui
     //printf("oi eu sou" "um print f" "outro aqui %d\n", a);
 
     // unOfficial Test
-    printf("\tunOfficial printf test:\n");
-    printf("Teste 0: %d in hexadecimal = %x\n", b, hex);
+    printf("\n\tun-Official printf test:");
+    ft_printf("Teste 0: %s\n", str);
+    ft_printf("Teste 1: %x in hexadecimal = %x\n", b, hex);
     //ft_printf("teste", "O numero %u significa prosperidade. %%O numero %d, amor; %d: alegria. %d eh o seu numero da sorte. Toma mais um numero ai %d. %cim!\n", a, 2, 52, 55, 987, 'F');
     
     //ft_printf("teste", "String %d: %s\n", 12, "eu sou um novo string");
 
     //ft_printf("teste", "\nString %d -- endereco: %p\n", 12, &a);
-    ft_printf("Teste 1: %d in hexadecimal = %x\n", b, hex);
+    //ft_printf("Teste 1: %x in hexadecimal = %x\n", b, hex);
 
     return (0);
 }
 
 /*
-gcc ft_printf.h ft_printf.c ft_strlen.c filter_func2.c ft_putchar.c loop_print.c ft_itoa.c && ./a.out
+
+gcc ft_printf.h ft_printf.c ft_strlen.c filter_func2.c ft_putchar.c loop_print.c ft_itoa.c hex.c count_digits.c && ./a.out
 */

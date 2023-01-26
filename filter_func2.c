@@ -6,25 +6,11 @@
 /*   By: video-fl <video-fl@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 16:14:05 by video-fl          #+#    #+#             */
-/*   Updated: 2022/12/20 16:26:58 by video-fl         ###   ########.fr       */
+/*   Updated: 2023/01/26 15:48:26 by video-fl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-char *print_hex(unsigned int value_hex)
-{
-    char *result;
-    unsigned int value;
-
-    value = value_hex % 16;
-    if (value > 16)
-    {
-        printf("\ntest %d", value);
-    }
-
-    return result;
-}
 
 void check_arg(va_list args, char next)
 {
@@ -69,11 +55,14 @@ void check_arg(va_list args, char next)
     }
     if (next == 'x') // hexadecimal
     {
-        value_ui = va_arg(args, int);
-        printf("\nhex: %u", value_ui);
+        value_ui = va_arg(args, unsigned int);
+        //printf("\nhex: %u", value_ui);
+        //printf("\n entrou aquiv no x");
+
         //value_int = check_arg / 16;
         
-        //print_hex(value_hex);
+        //to_print = print_hex(value_hex);
+        //printf("%s",to_print);
         //to_print = ft_itoa(value_hex);
         //loop_print(to_print);
         // usar unsigned long -> ver como funciona
@@ -81,7 +70,7 @@ void check_arg(va_list args, char next)
 }
 
 
-void filter_func2(va_list args)
+void filter_func2(const char *str, va_list args)
 {
     int i = 0;
     int num_args = 0;
@@ -89,12 +78,15 @@ void filter_func2(va_list args)
     int size = ft_strlen(value);
 
     //printf("\nsize: %d", size);
-    while (i < size)
+    //while (i < size)
+    //printf("\nvalue: %s", value);
+    while (str)
     {
+        // tem algum problema aqui!!! 💣
         if (value[i] == '%')
         {
-            //printf("\t tem um %% aqui\t");
-            check_arg(args, value[i + 1]);
+            printf("\n tem um %% aqui\t");
+            //check_arg(args, args[i + 1]);
             i++;
         }
         else 
